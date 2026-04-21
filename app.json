@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "turk-egitim-sen-bilecik",
+    "name": "Türk Eğitim-Sen Bilecik Şube",
     "slug": "turk-egitim-sen-bilecik",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
@@ -16,6 +16,7 @@
       "supportsTablet": true
     },
     "android": {
+      "usesCleartextTraffic": true,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -25,6 +26,16 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Duyuru görseli eklemek için fotoğraflarınıza erişmemiz gerekiyor.",
+          "cameraPermission": "Duyuru görseli eklemek için kameraya erişmemiz gerekiyor."
+        }
+      ]
+    ]
   }
 }

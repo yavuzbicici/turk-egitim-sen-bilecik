@@ -1,0 +1,22 @@
+{
+  "name": "tes-bilecik-server",
+  "private": true,
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "seed:firestore": "node scripts/seedFirestore.js",
+    "migrate:members:autoid": "node scripts/migrateMembersToAutoIds.js",
+    "migrate:members:add-fields": "node scripts/migrateAddMemberFields.js",
+    "import:members:csv": "node scripts/importMembersCsv.js"
+  },
+  "dependencies": {
+    "cloudinary": "^2.8.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "firebase-admin": "^13.8.0",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.6"
+  }
+}
