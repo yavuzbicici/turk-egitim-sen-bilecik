@@ -3,7 +3,7 @@ import { Alert, Platform, ScrollView, Text, View } from 'react-native';
 import { API_BASE_URL } from '../../src/config/api';
 import { useAuth } from '../../src/providers/AuthProvider';
 import { useTheme } from '../../src/providers/ThemeProvider';
-import { AppButton, AppTextInput, Card, H1, P, Screen } from '../../src/ui/components';
+import { AppButton, AppTextInput, AutolinkText, Card, H1, P, Screen } from '../../src/ui/components';
 
 type NewsItem = {
   id: string;
@@ -188,7 +188,7 @@ export default function NewsScreen() {
               ) : null}
             </View>
             <Text style={{ color: theme.colors.textMuted, fontWeight: '800', fontSize: 12 }}>{n.dateISO}</Text>
-            <P muted>{n.summary}</P>
+            <AutolinkText text={n.summary} muted />
           </Card>
         ))}
       </ScrollView>

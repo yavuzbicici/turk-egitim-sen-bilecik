@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   Image,
+  Linking,
   Pressable,
   StyleProp,
   StyleSheet,
@@ -137,6 +138,46 @@ export function P({ children, muted }: { children: React.ReactNode; muted?: bool
   return (
     <Text style={{ fontSize: 14, lineHeight: 20, color: muted ? theme.colors.textMuted : theme.colors.text }}>
       {children}
+    </Text>
+  );
+}
+
+/** Renders plain text with http(s) URLs as tappable links (web + native). */
+export function AutolinkText({ text, muted }: { text: string; muted?: boolean }) {
+  const { theme } = useTheme();
+  const baseColor = muted ? theme.colors.textMuted : theme.colors.text;
+  const linkColor = theme.colors.primary;
+
+  const parts = useMemo(() => {
+    const re = /(https?:\/\/[^\s]+)/gi;
+    const out: { type: 'text' | 'url'; value: string }[] = [];
+    let last = 0;
+    let m: RegExpExecArray | null;
+    while ((m = re.exec(text)) !== null) {
+      if (m.index > last) out.push({ type: 'text', value: text.slice(last, m.index) });
+      out.push({ type: 'url', value: m[0] });
+      last = re.lastIndex;
+    }
+    if (last < text.length) out.push({ type: 'text', value: text.slice(last) });
+    return out.length ? out : [{ type: 'text', value: text }];
+  }, [text]);
+
+  return (
+    <Text style={{ fontSize: 14, lineHeight: 20, color: baseColor }}>
+      {parts.map((p, i) =>
+        p.type === 'url' ? (
+          <Text
+            key={`u-${i}-${p.value.slice(0, 24)}`}
+            onPress={() => Linking.openURL(p.value)}
+            style={{ color: linkColor, textDecorationLine: 'underline', fontWeight: '700' }}
+            accessibilityRole="link"
+          >
+            {p.value}
+          </Text>
+        ) : (
+          <Text key={`t-${i}`}>{p.value}</Text>
+        ),
+      )}
     </Text>
   );
 }

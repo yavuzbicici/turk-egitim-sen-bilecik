@@ -6,7 +6,7 @@ import { Alert, Image, Linking, Platform, ScrollView, Text, useWindowDimensions,
 import { API_BASE_URL } from '../../src/config/api';
 import { useAuth } from '../../src/providers/AuthProvider';
 import { useTheme } from '../../src/providers/ThemeProvider';
-import { AppButton, AppTextInput, Card, H1, P, Screen } from '../../src/ui/components';
+import { AppButton, AppTextInput, AutolinkText, Card, H1, P, Screen } from '../../src/ui/components';
 
 type Announcement = {
   id: string;
@@ -506,7 +506,7 @@ export default function AnnouncementsScreen() {
               </View>
               <Text style={{ color: theme.colors.textMuted, fontWeight: '800', fontSize: 12 }}>{a.dateISO}</Text>
               {!!a.imageUrl && <AnnouncementImage url={a.imageUrl} />}
-              <P muted>{a.body}</P>
+              <AutolinkText text={a.body} muted />
             </Card>
           ))}
         </View>
