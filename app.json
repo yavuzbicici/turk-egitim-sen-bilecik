@@ -4,28 +4,33 @@
     "slug": "turk-egitim-sen-bilecik",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo.jpg",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/logo.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yavuzbicici.tesbilecik"
     },
     "android": {
+      "package": "com.yavuzbicici.tesbilecik",
       "usesCleartextTraffic": true,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo.jpg",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/logo.jpg"
     },
     "plugins": [
       "expo-router",
@@ -36,6 +41,13 @@
           "cameraPermission": "Duyuru görseli eklemek için kameraya erişmemiz gerekiyor."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "c0db4d3f-e45d-4bc6-9b88-8657fa5452fb"
+      }
+    },
+    "owner": "tesbilecikmobil"
   }
 }

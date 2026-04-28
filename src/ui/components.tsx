@@ -40,7 +40,7 @@ export function AppHeader({ right }: { right?: React.ReactNode }) {
   return (
     <View style={[styles.header, { borderBottomColor: theme.colors.border, backgroundColor: theme.colors.surface }]}>
       <View style={{ flex: 1, paddingRight: 12 }}>
-        <Image source={require('../../assets/logo.png')} style={styles.headerLogo} />
+        <Image source={require('../../assets/logo.jpg')} style={styles.headerLogo} />
       </View>
       {right}
     </View>
